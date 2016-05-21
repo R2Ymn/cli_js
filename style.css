@@ -1,0 +1,28 @@
+#greeting {
+  background-color: #F8F8F8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  margin: 15px;
+}
+
+#inputForm, #menuForm {
+  display: none;
+}
+
+#inputName, #menuNum {
+  border: none;
+}
+
+#inputName:focus, #menuNum:focus {
+  color: white;
+  background-color: black;
+}
+
+#inputName:blur, #menuNum:blur {
+  color: black;
+  background-color: white;
+}
+
+#contents {
+  display: none;
+}
