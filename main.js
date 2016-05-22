@@ -11,9 +11,7 @@ $(function () {
     $('#inputForm').hide();
     $('#menuForm').hide();
     $('#contents').hide();
-
-
-    // ============================ //
+    
     // --HTML表示フローエリア-- //
     $(function () {
 
@@ -47,8 +45,6 @@ $(function () {
 
     });
 
-
-    // ============================ //
     // ---表示フローの内部動作エリア---
     function flow_A() {
 
@@ -137,8 +133,6 @@ $(function () {
 
     }
 
-
-    // ============================ // 
     // ---全てに共通する動作エリア--- //
     function printTXT() {
         txtArr = dataTXT.split("");
@@ -156,13 +150,18 @@ $(function () {
         $('.curs').fadeIn(250).fadeOut(250);
     }, 500);
 
-
-    // ============================ //
     // ---各プログラム内部動作エリア--- //
-    function mainFunc_C_1() {
+    
+    var mainFunc_C = function() {
         $('#menuNum').blur();
         $area = $('#contents > .txt');
-        dataTXT = "1_print_OK";
+    };
+    
+    function mainFunc_C_1() {
+        //$('#menuNum').blur();
+        //$area = $('#contents > .txt');
+        mainFunc_C();
+        dataTXT = "C_1_print_OK";
         printTXT();
         return false;
     }
@@ -170,7 +169,7 @@ $(function () {
     function mainFunc_C_2() {
         $('#menuNum').blur();
         $area = $('#contents > .txt');
-        dataTXT = "2_print_OK";
+        dataTXT = "C_2_print_OK";
         printTXT();
         return false;
     }
@@ -178,7 +177,7 @@ $(function () {
     function mainFunc_C_3() {
         $('#menuNum').blur();
         $area = $('#contents > .txt');
-        dataTXT = "3_print_OK";
+        dataTXT = "C_3_print_OK";
         printTXT();
         return false;
     }
