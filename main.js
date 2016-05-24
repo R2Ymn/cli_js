@@ -22,10 +22,10 @@ $(function () {
             inputValName = $(this).val();
 
             if (e.keyCode === 13) {
-                if (inputValName === "") {
+                if (!inputValName) {
                     B_strErr();
                     return false;
-                } else if (inputValName != "") {
+                } else {
                     flow_B();
                     return false;
                 }
@@ -63,18 +63,18 @@ $(function () {
     function flow_B() {
 
         var menuTXT = {
-            "0": "##########\n",
-            "1": "メインメニューです\n",
-            "2": "##########\n",
-            "3": "\n# 1.おみくじ\n\n# 2.BMI計算\n\n# 3.じゃんけん\n",
-            "4": "\n番号を入力してください（半角数字）\n"
+            a: "##########\n",
+            b: "メインメニューです\n",
+            c: "##########\n",
+            d: "\n# 1.おみくじ\n\n# 2.BMI計算\n\n# 3.じゃんけん\n",
+            e: "\n番号を入力してください（半角数字）\n"
         };
 
         $area = $('#B > .txt');
         $('#B > .curs').html("_");
         inputValName = $('#inputName').val();
         dataTXT = "ようこそ、" + inputValName + " さん！\n"
-            + menuTXT[0] + menuTXT[1] + menuTXT[2] + menuTXT[3] + menuTXT[4];
+            + menuTXT.a + menuTXT.b + menuTXT.c + menuTXT.d + menuTXT.e;
         $('#inputName').blur();
         $('#inputForm > .err').text("");
         printTXT();
@@ -99,7 +99,7 @@ $(function () {
         $('#B > .curs').html("");
         $('#contents > .curs').html("_");
 
-        if (inputValNum === 1 || inputValNum === 2 || inputValNum === 3) {
+        if (inputValNum <= 3 && inputValNum != 0) {
             if (inputValNum === 1) {
                 $('#contents').show();
                 if ($('#contents').show()) {
@@ -151,15 +151,12 @@ $(function () {
     }, 500);
 
     // ---各プログラム内部動作エリア--- //
-    
     var mainFunc_C = function() {
         $('#menuNum').blur();
         $area = $('#contents > .txt');
     };
     
     function mainFunc_C_1() {
-        //$('#menuNum').blur();
-        //$area = $('#contents > .txt');
         mainFunc_C();
         dataTXT = "C_1_print_OK";
         printTXT();
@@ -167,16 +164,14 @@ $(function () {
     }
 
     function mainFunc_C_2() {
-        $('#menuNum').blur();
-        $area = $('#contents > .txt');
+        mainFunc_C();
         dataTXT = "C_2_print_OK";
         printTXT();
         return false;
     }
 
     function mainFunc_C_3() {
-        $('#menuNum').blur();
-        $area = $('#contents > .txt');
+        mainFunc_C();
         dataTXT = "C_3_print_OK";
         printTXT();
         return false;
