@@ -93,14 +93,7 @@ $(function () {
     }
 
     function B_strErr() {
-        $area = $('#inputForm > .err');
-        $('#inputName').blur();
-        dataTXT = " !:名前を入力してください:!";
-        printTXT();
-        setTimeout(function () {
-            $('#inputName').val("");
-            $('#inputName').focus();
-        }, 3500);
+        $('#inputForm > .err').text(" Err!: empty! 名前を入力してください");
     }
 
     function flow_C() {
@@ -124,14 +117,8 @@ $(function () {
     }
 
     function flow_C_Err() {
-        $area = $('#menuForm > .err');
-        $('#menuNum').blur();
-        dataTXT = " !:正しい番号を入力してください:!";
-        printTXT();
-        setTimeout(function () {
-            $('#menuNum').val("");
-            $('#menuNum').focus();
-        }, 3500);
+        $('#menuForm > .err').text(" Err!: " + valNum + " does not exist");
+        $('#menuNum').val("");
     }
 
     // ---全てに共通する動作エリア--- //
@@ -162,7 +149,6 @@ $(function () {
         mainFunc_C();
         var lot_data = ["「大吉」", "「中吉」", "「小吉」", "「凶」"];
         var i = Math.floor(Math.random() * lot_data.length);
-        //dataTXT = "C_1_print_OK";
         dataTXT = "\n# 1.おみくじ を開始します\n\n"
             + valName + " さんの運勢は・・・・・\n"
             + "・・・・・・・・・・・・・・\n" + "・・・・・・・・・・・・・・\n"
