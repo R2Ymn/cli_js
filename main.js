@@ -6,12 +6,12 @@ $(function () {
     var dataTXT = "";
     var txtArr = dataTXT.split("");
     var count = 0;
-    var inputValName = $('#inputName').val("");
-    var inputValNum = $('#inputNum').val("");
+    var valName = $('#inputName').val("");
+    var valNum = $('#inputNum').val("");
     $('#inputForm').hide();
     $('#menuForm').hide();
     $('#contents').hide();
-    
+
     // --HTML表示フローエリア-- //
     $(function () {
 
@@ -19,10 +19,10 @@ $(function () {
 
         $('#inputName').on("keydown", function (e) {
 
-            inputValName = $(this).val();
+            valName = $(this).val();
 
             if (e.keyCode === 13) {
-                if (!inputValName) {
+                if (!valName) {
                     B_strErr();
                     return false;
                 } else {
@@ -34,12 +34,17 @@ $(function () {
 
         $('#menuNum').on("keydown", function (e) {
 
-            var strNum = $(this).val();
-            inputValNum = Number(strNum);
+            var n = $(this).val();
+            valNum = Number(n);
 
             if (e.keyCode === 13) {
-                flow_C();
-                return false;
+                if (valNum <= 3 && valNum != 0) {
+                    flow_C();
+                    return false;
+                } else {
+                    flow_C_Err();
+                    return false;
+                }
             }
         });
 
@@ -63,34 +68,39 @@ $(function () {
     function flow_B() {
 
         var menuTXT = {
-            a: "##########\n",
+            a: "\n##############\n",
             b: "メインメニューです\n",
-            c: "##########\n",
+            c: "##############\n",
             d: "\n# 1.おみくじ\n\n# 2.BMI計算\n\n# 3.じゃんけん\n",
             e: "\n番号を入力してください（半角数字）\n"
         };
 
         $area = $('#B > .txt');
         $('#B > .curs').html("_");
-        inputValName = $('#inputName').val();
-        dataTXT = "ようこそ、" + inputValName + " さん！\n"
-            + menuTXT.a + menuTXT.b + menuTXT.c + menuTXT.d + menuTXT.e;
+        valName = $('#inputName').val();
         $('#inputName').blur();
         $('#inputForm > .err').text("");
+        dataTXT = "ようこそ、" + valName + " さん！\n"
+            + menuTXT.a + menuTXT.b + menuTXT.c + menuTXT.d + menuTXT.e;
         printTXT();
 
         setTimeout(function () {
             $('#menuForm').show();
             $('#menuNum').focus();
             $('#B > .curs').html("");
-        }, 20000);
+        }, 24000);
 
     }
 
     function B_strErr() {
         $area = $('#inputForm > .err');
+        $('#inputName').blur();
         dataTXT = " !:名前を入力してください:!";
         printTXT();
+        setTimeout(function () {
+            $('#inputName').val("");
+            $('#inputName').focus();
+        }, 3500);
     }
 
     function flow_C() {
@@ -99,38 +109,29 @@ $(function () {
         $('#B > .curs').html("");
         $('#contents > .curs').html("_");
 
-        if (inputValNum <= 3 && inputValNum != 0) {
-            if (inputValNum === 1) {
-                $('#contents').show();
-                if ($('#contents').show()) {
-                    mainFunc_C_1();
-                }
-            }
-
-            if (inputValNum === 2) {
-                $('#contents').show();
-                if ($('#contents').show()) {
-                    mainFunc_C_2();
-                }
-            }
-
-            if (inputValNum === 3) {
-                $('#contents').show();
-                if ($('#contents').show()) {
-                    mainFunc_C_3();
-                }
-            }
-        } else {
-            $area = $('#menuForm > .err');
-            $('#menuNum').blur();
-            dataTXT = " !:正しい番号を入力してください:!";
-            printTXT();
-            setTimeout(function () {
-                $('#menuNum').val("");
-                $('#menuNum').focus();
-            }, 3500);
+        if (valNum === 1) {
+            mainFunc_C_1();
         }
 
+        if (valNum === 2) {
+            mainFunc_C_2();
+        }
+
+        if (valNum === 3) {
+            mainFunc_C_3();
+        }
+
+    }
+
+    function flow_C_Err() {
+        $area = $('#menuForm > .err');
+        $('#menuNum').blur();
+        dataTXT = " !:正しい番号を入力してください:!";
+        printTXT();
+        setTimeout(function () {
+            $('#menuNum').val("");
+            $('#menuNum').focus();
+        }, 3500);
     }
 
     // ---全てに共通する動作エリア--- //
@@ -151,14 +152,21 @@ $(function () {
     }, 500);
 
     // ---各プログラム内部動作エリア--- //
-    var mainFunc_C = function() {
+    var mainFunc_C = function () {
         $('#menuNum').blur();
+        $('#contents').show();
         $area = $('#contents > .txt');
     };
-    
+
     function mainFunc_C_1() {
         mainFunc_C();
-        dataTXT = "C_1_print_OK";
+        var lot_data = ["「大吉」", "「中吉」", "「小吉」", "「凶」"];
+        var i = Math.floor(Math.random() * lot_data.length);
+        //dataTXT = "C_1_print_OK";
+        dataTXT = "\n# 1.おみくじ を開始します\n\n"
+            + valName + " さんの運勢は・・・・・\n"
+            + "・・・・・・・・・・・・・・\n" + "・・・・・・・・・・・・・・\n"
+            + lot_data[i] + "です。";
         printTXT();
         return false;
     }

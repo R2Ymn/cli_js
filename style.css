@@ -1,8 +1,7 @@
-#greeting {
-  background-color: #F8F8F8;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
-  margin: 15px;
+* {
+  font-size: 16px;
+  color: white;
+  background-color: black;
 }
 
 #inputForm, #menuForm {
@@ -13,14 +12,14 @@
   border: none;
 }
 
-#inputName:focus, #menuNum:focus {
-  color: white;
-  background-color: black;
-}
-
-#inputName:blur, #menuNum:blur {
+input:focus {
   color: black;
   background-color: white;
+}
+
+input:blur {
+  color: white;
+  background-color: black;
 }
 
 #contents {
