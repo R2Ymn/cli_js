@@ -154,6 +154,11 @@ $(function () {
             + "・・・・・・・・・・・・・・\n" + "・・・・・・・・・・・・・・\n"
             + lot_data[i] + "です。";
         printTXT();
+        
+        setTimeout(function () {
+            $area.after('<input type="button" value="OK">');
+        }, 15000);
+        
         return false;
     }
 
