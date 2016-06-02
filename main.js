@@ -104,6 +104,9 @@ $(function () {
 
         if (valNum === 1) {
             mainFunc_C_1();
+            setTimeout(function() {
+                test();
+            },15000);
         }
 
         if (valNum === 2) {
@@ -144,6 +147,15 @@ $(function () {
         $('#contents').show();
         $area = $('#contents > .txt');
     };
+    
+    function test() {
+        $('#contents > .curs').html("");
+        $('.test > .curs').html("_");
+        $area = $('.test > .txt');
+        dataTXT = "\nテストです";
+         printTXT();
+        return false;
+    }
 
     function mainFunc_C_1() {
         mainFunc_C();
@@ -154,11 +166,6 @@ $(function () {
             + "・・・・・・・・・・・・・・\n" + "・・・・・・・・・・・・・・\n"
             + lot_data[i] + "です。";
         printTXT();
-        
-        setTimeout(function () {
-            $area.after('<input type="button" value="OK">');
-        }, 15000);
-        
         return false;
     }
 
