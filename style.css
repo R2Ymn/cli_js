@@ -1,3 +1,36 @@
+body {
+  font-size: 16px;
+  color: white;
+  background-color: black;
+}
+
+#form_Name, #form_Menu {
+  display: none;
+}
+
+#inputName, #menuNum {
+  border: none;
+}
+
+input:focus {
+  color: black;
+  background-color: white;
+}
+
+input:blur {
+  color: white;
+  background-color: black;
+}
+
+#contents {
+  display: none;
+}
+
+.hideSub {
+  visibility: hidden;
+}
+
+/*
 * {
   font-size: 16px;
   color: white;
@@ -25,3 +58,4 @@ input:blur {
 #contents {
   display: none;
 }
+*/

@@ -1,5 +1,98 @@
 $(function () {
 
+    // -----初期化----- //
+    var $txtArea = $('');
+    var dataTXT = "";
+    var txtArr = dataTXT.split("");
+    var count = 0;
+    var valName = $('#inputName').val("");
+    var valNum = $('#menuNum').val("");
+    $('#form_Name').hide();
+    $('#form_Menu').hide();
+    $('#contents').hide();
+
+    // -----動作の流れ----- //
+    $(function () {
+
+        firstMes(); // 最初のメッセージ
+        /*
+        $('#form_Name').submit(function () {
+            showMenu();
+            return false;
+        });
+        */
+         $('#inputName').on("keydown", function (e) {
+             if (e.keyCode === 13) {
+                 //alert("ok");
+                 showMenu();
+                 return false;
+             }
+         });
+    });
+
+
+    // -----内部動作関数----- //
+    // 最初のメッセージ - firstMes
+    function firstMes() {
+        $area = $('#first > .txt');
+        $('#first > .curs').html("_");
+        dataTXT = "Hello,World!\n名前を入力してください";
+        printTXT();
+
+        setTimeout(function () {
+            $('#form_Name').show();
+            $('#inputName').focus();
+            $('#first > .curs').html("");
+        }, 5000);
+    }
+
+    // メニュー表示
+    function showMenu() {
+
+        var menuTXT = {
+            a: "\n##############\n",
+            b: "メインメニューです\n",
+            c: "##############\n",
+            d: "\n# 1.おみくじ\n\n# 2.BMI計算\n\n# 3.じゃんけん\n",
+            e: "\n番号を入力してください（半角数字）\n"
+        };
+
+        $area = $('#menu > .txt');
+        $('#menu > .curs').html("_");
+        valName = $('#inputName').val();
+        $('#inputName').blur();
+        $('#form_Name > .err').text("");
+        dataTXT = "ようこそ、" + valName + " さん！\n"
+            + menuTXT.a + menuTXT.b + menuTXT.c + menuTXT.d + menuTXT.e;
+        printTXT();
+
+        setTimeout(function () {
+            $('#form_Menu').show();
+            $('#menuNum').focus();
+            $('#menu > .curs').html("");
+        }, 24000);
+    }
+
+    // テキスト表示の動作
+    function printTXT() {
+        txtArr = dataTXT.split("");
+        var timer = setTimeout(printTXT, 200);
+        $area.append(txtArr[count].replace(/\n/, '<br>'));
+        count++;
+
+        if (count == txtArr.length) {
+            clearTimeout(timer);
+            count = 0;
+        }
+    }
+
+    // カーソル点滅の動作
+    setInterval(function () {
+        $('.curs').fadeIn(250).fadeOut(250);
+    }, 500);
+
+
+    /*
     // ---初期化エリア--- //
 
     var $area = $('');
@@ -183,4 +276,6 @@ $(function () {
         return false;
     }
     // --end--
+
+    */
 });
