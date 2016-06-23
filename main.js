@@ -21,13 +21,45 @@ $(function () {
             return false;
         });
         */
-         $('#inputName').on("keydown", function (e) {
-             if (e.keyCode === 13) {
-                 //alert("ok");
-                 showMenu();
-                 return false;
-             }
-         });
+        $('#inputName').on("keydown", function (e) {
+            if (e.keyCode === 13) {
+                //alert("ok");
+                showMenu();
+                return false;
+            }
+        });
+
+        $('#menuNum').on("keydown", function (e) {
+            if (e.keyCode === 13) {
+               valNum = $('#menuNum').val();
+
+                if (valNum === "1") {
+                    $('#contents').show();
+                    $area = $('#contents > .txt');
+                    dataTXT = "testtesttest1";
+                    printTXT();
+                    return false;
+                }
+
+                if (valNum === "2") {
+                    $('#contents').show();
+                    $area = $('#contents > .txt');
+                    dataTXT = "testtesttest2";
+                    printTXT();
+                    return false;
+                }
+
+                if (valNum === "3") {
+                    $('#contents').show();
+                    $area = $('#contents > .txt');
+                    dataTXT = "testtesttest3";
+                    printTXT();
+                    return false;
+                }
+
+                return false;
+            }
+        });
     });
 
 
