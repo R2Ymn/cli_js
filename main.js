@@ -31,14 +31,17 @@ $(function () {
 
         $('#menuNum').on("keydown", function (e) {
             if (e.keyCode === 13) {
-               valNum = $('#menuNum').val();
+                valNum = $('#menuNum').val();
 
                 if (valNum === "1") {
+                    prog_1();
+                    /*
                     $('#contents').show();
                     $area = $('#contents > .txt');
                     dataTXT = "testtesttest1";
                     printTXT();
                     return false;
+                    */
                 }
 
                 if (valNum === "2") {
@@ -103,6 +106,24 @@ $(function () {
             $('#menuNum').focus();
             $('#menu > .curs').html("");
         }, 24000);
+    }
+
+    var showProg = function () {
+        $('#menuNum').blur();
+        $('#contents').show();
+        $area = $('#contents > .txt');
+    };
+
+    function prog_1() {
+        showProg();
+        var lot_data = ["「大吉」", "「中吉」", "「小吉」", "「凶」"];
+        var i = Math.floor(Math.random() * lot_data.length);
+        dataTXT = "\n# 1.おみくじ を開始します\n\n"
+            + valName + " さんの運勢は・・・・・\n"
+            + "・・・・・・・・・・・・・・\n" + "・・・・・・・・・・・・・・\n"
+            + lot_data[i] + "です。";
+        printTXT();
+        return false;
     }
 
     // テキスト表示の動作
