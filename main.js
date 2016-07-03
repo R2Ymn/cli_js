@@ -9,7 +9,9 @@ $(function () {
     var valNum = $('#menuNum').val("");
     $('#form_Name').hide();
     $('#form_Menu').hide();
+    $('#form_end').hide();
     $('#contents').hide();
+    //var flag = 0;
 
     // -----動作の流れ----- //
     $(function () {
@@ -31,20 +33,15 @@ $(function () {
 
         $('#menuNum').on("keydown", function (e) {
             if (e.keyCode === 13) {
+
                 valNum = $('#menuNum').val();
 
-                if (valNum === "1") {
+                if (Number(valNum) === 1) {
                     prog_1();
-                    /*
-                    $('#contents').show();
-                    $area = $('#contents > .txt');
-                    dataTXT = "testtesttest1";
-                    printTXT();
                     return false;
-                    */
                 }
 
-                if (valNum === "2") {
+                if (Number(valNum) === 2) {
                     $('#contents').show();
                     $area = $('#contents > .txt');
                     dataTXT = "testtesttest2";
@@ -52,7 +49,7 @@ $(function () {
                     return false;
                 }
 
-                if (valNum === "3") {
+                if (Number(valNum) === 3) {
                     $('#contents').show();
                     $area = $('#contents > .txt');
                     dataTXT = "testtesttest3";
@@ -111,9 +108,13 @@ $(function () {
     var showProg = function () {
         $('#menuNum').blur();
         $('#contents').show();
+        $('#contents > .curs').html("_");
         $area = $('#contents > .txt');
     };
 
+    var endingTxt = "\n1.もう一度／2.終了する\n番号を入力してください";
+
+    // おみくじ
     function prog_1() {
         showProg();
         var lot_data = ["「大吉」", "「中吉」", "「小吉」", "「凶」"];
@@ -121,10 +122,20 @@ $(function () {
         dataTXT = "\n# 1.おみくじ を開始します\n\n"
             + valName + " さんの運勢は・・・・・\n"
             + "・・・・・・・・・・・・・・\n" + "・・・・・・・・・・・・・・\n"
-            + lot_data[i] + "です。";
+            + lot_data[i] + "です。\n"
+            + endingTxt;
         printTXT();
+        //flag = 1;
+
+        setTimeout(function() {
+            $('#form_end').show();
+            $('#contents > .curs').html("");
+        },20000);
+
+        showEndform();
         return false;
     }
+
 
     // テキスト表示の動作
     function printTXT() {

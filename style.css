@@ -4,11 +4,11 @@ body {
   background-color: black;
 }
 
-#form_Name, #form_Menu {
+#form_Name, #form_Menu, #form_end {
   display: none;
 }
 
-#inputName, #menuNum {
+#inputName, #menuNum, #endNum {
   border: none;
 }
 
