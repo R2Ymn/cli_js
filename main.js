@@ -7,6 +7,7 @@ $(function () {
     var count = 0;
     var valName = $('#inputName').val("");
     var valNum = $('#menuNum').val("");
+    var numEnd = $('#endNum').val("");
     $('#form_Name').hide();
     $('#form_Menu').hide();
     $('#form_end').hide();
@@ -57,9 +58,20 @@ $(function () {
                     return false;
                 }
 
+                //return false;
+            }
+        });
+
+        $('#endNum').on("keydown", function (e) {
+            if (e.keyCode === 13) {
+                //alert("ok");
+                numEnd = $('#endNum').val();
+                $('#endNum').blur();
+                alert(numEnd);
                 return false;
             }
         });
+
     });
 
 
@@ -112,6 +124,12 @@ $(function () {
         $area = $('#contents > .txt');
     };
 
+    var showEnd = function () {
+        $('#form_end').show();
+        $('#endNum').focus();
+        $('#contents > .curs').html("");
+    };
+
     var endingTxt = "\n1.もう一度／2.終了する\n番号を入力してください";
 
     // おみくじ
@@ -127,10 +145,12 @@ $(function () {
         printTXT();
         //flag = 1;
 
-        setTimeout(function() {
-            $('#form_end').show();
-            $('#contents > .curs').html("");
-        },20000);
+        setTimeout(function () {
+            showEnd();
+            //$('#form_end').show();
+            //$('#endNum').focus();
+            //$('#contents > .curs').html("");
+        }, 20000);
 
         showEndform();
         return false;
