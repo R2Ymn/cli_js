@@ -158,7 +158,7 @@ $(function () {
             //$('#form_end').show();
             //$('#endNum').focus();
             //$('#contents > .curs').html("");
-        }, 25000);
+        }, 20000);
 
        // showEndform();
         return false;
