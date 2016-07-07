@@ -8,6 +8,8 @@ $(function () {
     var valName = $('#inputName').val("");
     var valNum = $('#menuNum').val("");
     var numEnd = $('#endNum').val("");
+    var focusColor = {backgroundColor:"limegreen",color:"black"}
+    var blurColor = {backgroundColor:"black",color:"green",border:"none"}
     $('#form_Name').hide();
     $('#form_Menu').hide();
     $('.form_end').hide();
@@ -67,7 +69,7 @@ $(function () {
             if (e.keyCode === 13) {
                 //alert("ok");
                 numEnd = $('#endNum').val();
-                $('#endNum').blur();
+                $('#endNum').blur().css(blurColor);
                 console.log(numEnd);
                 if (numEnd === '1') {
                     $('.form_end').hide();
@@ -91,7 +93,7 @@ $(function () {
 
         setTimeout(function () {
             $('#form_Name').show();
-            $('#inputName').focus();
+            $('#inputName').focus().css(focusColor);
             $('#first > .curs').html("");
         }, 5000);
     }
@@ -110,7 +112,7 @@ $(function () {
         $area = $('#menu > .txt');
         $('#menu > .curs').html("_");
         valName = $('#inputName').val();
-        $('#inputName').blur();
+        $('#inputName').blur().css(blurColor);
         $('#form_Name > .err').text("");
         dataTXT = "ようこそ、" + valName + " さん！\n"
             + menuTXT.a + menuTXT.b + menuTXT.c + menuTXT.d + menuTXT.e;
@@ -118,13 +120,13 @@ $(function () {
 
         setTimeout(function () {
             $('#form_Menu').show();
-            $('#menuNum').focus();
+            $('#menuNum').focus().css(focusColor);
             $('#menu > .curs').html("");
         }, 24000);
     }
 
     var showProg = function () {
-        $('#menuNum').blur();
+        $('#menuNum').blur().css(blurColor);
         $('.contents').show();
         $('.contents > .curs').html("_");
         $area = $('.contents > .txt');
@@ -132,7 +134,7 @@ $(function () {
 
     var showEnd = function () {
         $('.form_end').show();
-        $('#endNum').focus();
+        $('#endNum').focus().css(focusColor);
         $('.contents > .curs').html("");
     };
 
@@ -156,7 +158,7 @@ $(function () {
             //$('#form_end').show();
             //$('#endNum').focus();
             //$('#contents > .curs').html("");
-        }, 20000);
+        }, 25000);
 
        // showEndform();
         return false;
