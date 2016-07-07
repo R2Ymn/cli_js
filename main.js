@@ -10,9 +10,10 @@ $(function () {
     var numEnd = $('#endNum').val("");
     $('#form_Name').hide();
     $('#form_Menu').hide();
-    $('#form_end').hide();
-    $('#contents').hide();
+    $('.form_end').hide();
+    $('.contents').hide();
     //var flag = 0;
+    // var addHTML = '<div class="contents"><span class="txt">testです</span><span class="curs"></span><form class="form_end">&gt; <input type="text" id="endNum" value="" size="2"> ↩︎ <span class="err"></span><br></form></div>';
 
     // -----動作の流れ----- //
     $(function () {
@@ -67,7 +68,12 @@ $(function () {
                 //alert("ok");
                 numEnd = $('#endNum').val();
                 $('#endNum').blur();
-                alert(numEnd);
+                console.log(numEnd);
+                if (numEnd === '1') {
+                    $('.form_end').hide();
+                    prog_1();
+                    return false;
+                }
                 return false;
             }
         });
@@ -119,15 +125,15 @@ $(function () {
 
     var showProg = function () {
         $('#menuNum').blur();
-        $('#contents').show();
-        $('#contents > .curs').html("_");
-        $area = $('#contents > .txt');
+        $('.contents').show();
+        $('.contents > .curs').html("_");
+        $area = $('.contents > .txt');
     };
 
     var showEnd = function () {
-        $('#form_end').show();
+        $('.form_end').show();
         $('#endNum').focus();
-        $('#contents > .curs').html("");
+        $('.contents > .curs').html("");
     };
 
     var endingTxt = "\n1.もう一度／2.終了する\n番号を入力してください";
@@ -137,7 +143,7 @@ $(function () {
         showProg();
         var lot_data = ["「大吉」", "「中吉」", "「小吉」", "「凶」"];
         var i = Math.floor(Math.random() * lot_data.length);
-        dataTXT = "\n# 1.おみくじ を開始します\n\n"
+        dataTXT = "\n>\n# 1.おみくじ を開始します\n\n"
             + valName + " さんの運勢は・・・・・\n"
             + "・・・・・・・・・・・・・・\n" + "・・・・・・・・・・・・・・\n"
             + lot_data[i] + "です。\n"
@@ -152,7 +158,7 @@ $(function () {
             //$('#contents > .curs').html("");
         }, 20000);
 
-        showEndform();
+       // showEndform();
         return false;
     }
 

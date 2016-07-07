@@ -1,28 +1,30 @@
-body {
-  font-size: 16px;
+* {
+  font-size: 14px;
   color: white;
   background-color: black;
 }
 
-#form_Name, #form_Menu, #form_end {
+#form_Name, #form_Menu, .form_end {
   display: none;
 }
+
 
 #inputName, #menuNum, #endNum {
   border: none;
 }
 
-input:focus {
+
+input[type="text"]:focus {
   color: black;
   background-color: white;
 }
 
-input:blur {
+input[type="text"]:blur {
   color: white;
   background-color: black;
 }
 
-#contents {
+.contents {
   display: none;
 }
 
